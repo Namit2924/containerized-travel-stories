@@ -1,0 +1,13 @@
+node_modules
+.env
+dist
+build
+coverage
+
+Dockerfile.old
+docker-compose.override.yml
+
+.vscode
+.idea
+
+*.log

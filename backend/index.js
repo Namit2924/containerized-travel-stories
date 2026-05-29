@@ -11,9 +11,11 @@ const { authenticationtoken } = require("./utilities");
 const upload = require("./multer");
 const path = require("path");
 const fs = require("fs");
-// const cloudinary_upload = require("./cloudinary");
 
-mongoose.connect("mongodb://localhost:27017/namitdhangar9")
+// const cloudinary_upload = require("./cloudinary");
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Connected to MongoDB"))
     .catch((err) => console.error("Error connecting to MongoDB", err));
 
@@ -408,8 +410,8 @@ app.use("/assets",express.static(path.join(__dirname,"assets")))
 
 
 
-app.listen(8000, () => {
-    console.log("Server running on http://localhost:8000");
+app.listen(8000, "0.0.0.0", () => {
+    console.log("Server running on port 8000");
 });
 
 module.exports = app;
